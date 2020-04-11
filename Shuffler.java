@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -50,7 +52,19 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int k = 0;
+		for (int j = 0; j < values.length; j++) {
+			shuffled[k] = values[j];
+			k += 2;
+		}
+		
+		k = 1;
+		for (int j = values.length/2; j < values.length; j++) {
+			shuffled[k] = values[j];
+			k += 2;
+		}
+		System.out.println(shuffled);
 	}
 
 	/**
@@ -65,6 +79,38 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		Random r = new Random();
+		for(int k = values.length - 1; k >= 0; k--) {
+			shuffled[k] = values[r.nextInt(k)]; 
+		}
+	}
+	
+	public static String flip() {
+		Random r = new Random();
+		int j = r.nextInt(3);
+		if (j > 0) { 
+			return "heads";
+		}
+		else {
+			return "tails";
+		}
+	}
+	
+	public static boolean arePermutation(int[] arr1, int[] arr2) {
+		boolean b = false;
+		int j = 0;
+		for(int i = 0; i < arr1.length; i++) {
+			while(b = false) {
+				if(arr2[j] >= arr2.length) {
+					return false;
+				}
+				if (arr1[i] == arr2[j]) {
+					b = true;
+				}
+				j++;
+			}
+		}
+		return b;
 	}
 }
