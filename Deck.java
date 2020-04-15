@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 
 /**
@@ -35,8 +36,7 @@ public class Deck {
 			for (String suitString : suits) {
 				cards.add(new Card(ranks[j], suitString, values[j]));
 			}
-		}
-		size = cards.size();
+		}		size = cards.size();
 		shuffle();
 	}
 
@@ -62,7 +62,20 @@ public class Deck {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		ArrayList<Card> shuffled = new ArrayList<Card>();
+		Random r = new Random();
+		int k = 0;
+		while(k < 52) {
+		int j = r.nextInt(52);
+			if (cards.get(j) != null) {
+			shuffled.add(cards.get(j));
+			cards.set(j, null);
+			k++;
+			}
+		}
+		cards.clear();
+		cards.addAll(shuffled);
+		size = 52;
 	}
 
 	/**
