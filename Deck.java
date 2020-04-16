@@ -65,11 +65,12 @@ public class Deck {
 		ArrayList<Card> shuffled = new ArrayList<Card>();
 		Random r = new Random();
 		int k = 0;
-		while(k < 52) {
+		Card clear = new Card("clear", "clear", 0);
+		while(k <= cards.size()) {
 		int j = r.nextInt(52);
-			if (cards.get(j) != null) {
+			if (cards.get(j) != clear) {
 			shuffled.add(cards.get(j));
-			cards.set(j, null);
+			cards.set(j, clear);
 			k++;
 			}
 		}
